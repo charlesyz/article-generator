@@ -12,7 +12,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
     // list of file names
     let model_list = ["model-sci-space-25", "model-talk-politics-mideast-25", "model-sci-electronics-25"]
-    let tokenizer_list = ["tokenizer-sci-space", "tokenizer-talk-politics-mideast", "tokenizer-sci-electronics-25"]
+    let tokenizer_list = ["tokenizer-sci-space", "tokenizer-talk-politics-mideast", "tokenizer-sci-electronics"]
     // UI elements
     let outputField: UITextView = {
         let outputField = UITextView(frame: CGRect(x: 20.0, y: 110, width: 300, height: 400))
@@ -60,6 +60,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         modelField.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
         return modelField
     }()
+    
     let runButton: UIButton = {
         let runButton : UIButton = UIButton(frame: CGRect(x: 50, y: 600, width: 100, height: 50))
         runButton.backgroundColor = .black
@@ -80,6 +81,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         let doneBtn: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissKeyboard))
         toolbar.setItems([flexSpace, doneBtn], animated: false)
         toolbar.sizeToFit()
+        
         //setting toolbar as inputAccessoryView
         self.outputField.inputAccessoryView = toolbar
         self.inputField.inputAccessoryView = toolbar
@@ -158,22 +160,46 @@ class ViewController: UIViewController, UITextFieldDelegate {
     func generate_seq(model: model_25, tokenizer: Dictionary<String, Int>, seqLength: Int, seedText: String, numWords: Int) -> String{
         var result: String = ""
         var inText = seedText
-        var randomize = true
+        let randomize = true
+        let completeSentence = true
         
         // Prep the input
         inText = prep_input(input: inText)
         
-        // Pad the input with random words if necessary
-        var randomText: String = ""
-        let remainingLen = seqLength - inText.components(separatedBy: " ").count
-        let randomLen = remainingLen > 0 ? remainingLen : 1
+        var randomText = ""
+        // either the input text or a random word
+        var displayText = ""
+        // add a random word to the front if randomize is enabled. Will only randomize if input is < 25 words
         if randomize{
+            randomText = tokenizer.key(forValue: Int(arc4random_uniform(UInt32(tokenizer.count))))!
+            print("Random:" + randomText)
+            
+            // only show the random word if the input string is empty.
+            if inText != "" {
+                displayText = inText
+            }
+            else{
+                displayText = randomText + " " + inText
+            }
+            
+            inText = randomText + " " + inText
+            
+        }
+        
+        /* Pad the input with random words if necessary
+        
+        if randomize{
+         
+            let remainingLen = seqLength - inText.components(separatedBy: " ").count
+            let randomLen = remainingLen > 0 ? remainingLen : 1
+         
             for _ in 0...randomLen{
                 let num = arc4random_uniform(UInt32(tokenizer.count))
                 randomText.append(tokenizer.key(forValue: Int(num))! + " ")
             }
-        }
-        inText = randomText + inText
+         
+         inText = randomText + inText
+        }*/
         
         print("Input:" + inText)
         
@@ -191,7 +217,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
         
         // Generate the text
-        for _ in 1...numWords{
+        for count in 1...500{
             
             let input = model_25_input(input1: inputData)
             guard let output = try? model.prediction(input: input).output1 else{
@@ -203,15 +229,28 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 if (output[i].doubleValue > output[maxIndex].doubleValue){maxIndex = i; }
             }
             
-            let outputWord: String = tokenizer.key(forValue: maxIndex)!
-            result += outputWord + " "
-            
+            // move the input data back 1, then append the new word on the end
             for i in 0..<24{
                 inputData[i] = inputData[i + 1]
             }
             inputData[24] =  NSNumber(floatLiteral: Double(maxIndex))
+            
+            let outputWord: String = tokenizer.key(forValue: maxIndex)!
+            result += outputWord + " "
+    
+            
+            if completeSentence && [".", "!", "?"].contains(outputWord){
+                break
+            }
+            else if count > numWords{
+                break
+            }
 
         }
+        
+        
+        result = displayText + result
+        
         print(result)
         return result
     }

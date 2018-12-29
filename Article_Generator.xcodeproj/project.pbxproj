@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		43B3A2113B1F8997DA3945F6 /* Pods_Article_GeneratorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11EB4DD90A3EB2B3A22D0A09 /* Pods_Article_GeneratorTests.framework */; };
 		84C90718352C288ADBB6185D /* Pods_Article_Generator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1783617027C6151095DDA323 /* Pods_Article_Generator.framework */; };
-		AE0FCD3E21D821DC00ABE468 /* model-sci-electronics-25.mlmodelc in Resources */ = {isa = PBXBuildFile; fileRef = AE0FCD3D21D821DC00ABE468 /* model-sci-electronics-25.mlmodelc */; };
 		AE0FCD4021D821EF00ABE468 /* tokenizer-sci-electronics.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE0FCD3F21D821EF00ABE468 /* tokenizer-sci-electronics.plist */; };
+		AE0FCD4B21D8294400ABE468 /* model-sci-electronics-25.mlmodelc in Resources */ = {isa = PBXBuildFile; fileRef = AE0FCD4A21D8294400ABE468 /* model-sci-electronics-25.mlmodelc */; };
 		AE1B67EC21374C4300838FD7 /* model-sci-space-25.mlmodelc in Resources */ = {isa = PBXBuildFile; fileRef = AE1B67EB21374C4300838FD7 /* model-sci-space-25.mlmodelc */; };
 		AE1B67EE21374C4D00838FD7 /* model-talk-politics-mideast-25.mlmodelc in Resources */ = {isa = PBXBuildFile; fileRef = AE1B67ED21374C4D00838FD7 /* model-talk-politics-mideast-25.mlmodelc */; };
 		AE1B67F3213752FE00838FD7 /* tokenizer-sci-space.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE1B67F1213752FE00838FD7 /* tokenizer-sci-space.plist */; };
@@ -40,8 +40,8 @@
 		4997F6006CCD964838D2CA87 /* Pods-Article_Generator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Article_Generator.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Article_Generator/Pods-Article_Generator.debug.xcconfig"; sourceTree = "<group>"; };
 		54DD036392FA39DADB05E8ED /* Pods-Article_Generator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Article_Generator.release.xcconfig"; path = "Pods/Target Support Files/Pods-Article_Generator/Pods-Article_Generator.release.xcconfig"; sourceTree = "<group>"; };
 		7DAE618D4FCE55E6A93917EB /* Pods-Article_GeneratorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Article_GeneratorTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Article_GeneratorTests/Pods-Article_GeneratorTests.release.xcconfig"; sourceTree = "<group>"; };
-		AE0FCD3D21D821DC00ABE468 /* model-sci-electronics-25.mlmodelc */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "model-sci-electronics-25.mlmodelc"; sourceTree = "<group>"; };
 		AE0FCD3F21D821EF00ABE468 /* tokenizer-sci-electronics.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "tokenizer-sci-electronics.plist"; sourceTree = "<group>"; };
+		AE0FCD4A21D8294400ABE468 /* model-sci-electronics-25.mlmodelc */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "model-sci-electronics-25.mlmodelc"; sourceTree = "<group>"; };
 		AE1B67EB21374C4300838FD7 /* model-sci-space-25.mlmodelc */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "model-sci-space-25.mlmodelc"; sourceTree = "<group>"; };
 		AE1B67ED21374C4D00838FD7 /* model-talk-politics-mideast-25.mlmodelc */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "model-talk-politics-mideast-25.mlmodelc"; sourceTree = "<group>"; };
 		AE1B67F1213752FE00838FD7 /* tokenizer-sci-space.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "tokenizer-sci-space.plist"; sourceTree = "<group>"; };
@@ -137,7 +137,7 @@
 		AE9F95512134B53A000D5B3B /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				AE0FCD3D21D821DC00ABE468 /* model-sci-electronics-25.mlmodelc */,
+				AE0FCD4A21D8294400ABE468 /* model-sci-electronics-25.mlmodelc */,
 				AE1B67ED21374C4D00838FD7 /* model-talk-politics-mideast-25.mlmodelc */,
 				AE1B67EB21374C4300838FD7 /* model-sci-space-25.mlmodelc */,
 			);
@@ -256,11 +256,11 @@
 				AE0FCD4021D821EF00ABE468 /* tokenizer-sci-electronics.plist in Resources */,
 				AE9F953A2133979E000D5B3B /* LaunchScreen.storyboard in Resources */,
 				AE9F95372133979E000D5B3B /* Assets.xcassets in Resources */,
-				AE0FCD3E21D821DC00ABE468 /* model-sci-electronics-25.mlmodelc in Resources */,
 				AE1B67F3213752FE00838FD7 /* tokenizer-sci-space.plist in Resources */,
 				AE1B67EE21374C4D00838FD7 /* model-talk-politics-mideast-25.mlmodelc in Resources */,
 				AE1B67EC21374C4300838FD7 /* model-sci-space-25.mlmodelc in Resources */,
 				AE1B67F4213752FE00838FD7 /* tokenizer-talk-politics-mideast.plist in Resources */,
+				AE0FCD4B21D8294400ABE468 /* model-sci-electronics-25.mlmodelc in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
