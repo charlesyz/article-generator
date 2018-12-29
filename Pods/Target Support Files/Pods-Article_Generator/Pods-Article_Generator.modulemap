@@ -1,0 +1,6 @@
+framework module Pods_Article_Generator {
+  umbrella header "Pods-Article_Generator-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -8,14 +8,14 @@
 
 import UIKit
 import CoreML
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
 
     // list of file names
-    let model_list = ["model-sci-space-25", "model-talk-politics-mideast-25"]
-    let tokenizer_list = ["tokenizer-sci-space", "tokenizer-talk-politics-mideast"]
+    let model_list = ["model-sci-space-25", "model-talk-politics-mideast-25", "model-sci-electronics-25"]
+    let tokenizer_list = ["tokenizer-sci-space", "tokenizer-talk-politics-mideast", "tokenizer-sci-electronics-25"]
     // UI elements
     let outputField: UITextView = {
-        let outputField = UITextView(frame: CGRect(x: 20.0, y: 90.0, width: 300, height: 400))
+        let outputField = UITextView(frame: CGRect(x: 20.0, y: 110, width: 300, height: 400))
         outputField.textAlignment = NSTextAlignment.left
         outputField.textColor = UIColor.black
         outputField.backgroundColor = UIColor.white
@@ -23,15 +23,15 @@ class ViewController: UIViewController {
         return outputField
     }()
     let inputField: UITextField = {
-        let inputField = UITextField(frame: CGRect(x: 40, y: 30, width: 300, height: 40))
+        let inputField = UITextField(frame: CGRect(x: 40, y: 50, width: 300, height: 40))
         inputField.placeholder = "Enter seed text here"
         inputField.font = UIFont.systemFont(ofSize: 15)
-        inputField.borderStyle = UITextBorderStyle.roundedRect
+        inputField.borderStyle = UITextField.BorderStyle.roundedRect
         inputField.autocorrectionType = UITextAutocorrectionType.no
         inputField.keyboardType = UIKeyboardType.default
         inputField.returnKeyType = UIReturnKeyType.done
-        inputField.clearButtonMode = UITextFieldViewMode.whileEditing;
-        inputField.contentVerticalAlignment = UIControlContentVerticalAlignment.center
+        inputField.clearButtonMode = UITextField.ViewMode.whileEditing;
+        inputField.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
         return inputField
     }()
     let lengthField: UITextField = {
@@ -39,12 +39,12 @@ class ViewController: UIViewController {
         lengthField.placeholder = "Length"
         lengthField.text = "100"
         lengthField.font = UIFont.systemFont(ofSize: 15)
-        lengthField.borderStyle = UITextBorderStyle.roundedRect
+        lengthField.borderStyle = UITextField.BorderStyle.roundedRect
         lengthField.autocorrectionType = UITextAutocorrectionType.no
         lengthField.keyboardType = UIKeyboardType.default
         lengthField.returnKeyType = UIReturnKeyType.done
-        lengthField.clearButtonMode = UITextFieldViewMode.whileEditing;
-        lengthField.contentVerticalAlignment = UIControlContentVerticalAlignment.center
+        lengthField.clearButtonMode = UITextField.ViewMode.whileEditing;
+        lengthField.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
         return lengthField
     }()
     let modelField: UITextField = {
@@ -52,18 +52,18 @@ class ViewController: UIViewController {
         modelField.placeholder = "Model#(0/1)"
         modelField.text = "1"
         modelField.font = UIFont.systemFont(ofSize: 15)
-        modelField.borderStyle = UITextBorderStyle.roundedRect
+        modelField.borderStyle = UITextField.BorderStyle.roundedRect
         modelField.autocorrectionType = UITextAutocorrectionType.no
         modelField.keyboardType = UIKeyboardType.default
         modelField.returnKeyType = UIReturnKeyType.done
-        modelField.clearButtonMode = UITextFieldViewMode.whileEditing;
-        modelField.contentVerticalAlignment = UIControlContentVerticalAlignment.center
+        modelField.clearButtonMode = UITextField.ViewMode.whileEditing;
+        modelField.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
         return modelField
     }()
     let runButton: UIButton = {
         let runButton : UIButton = UIButton(frame: CGRect(x: 50, y: 600, width: 100, height: 50))
         runButton.backgroundColor = .black
-        runButton.setTitle("Button", for: .normal)
+        runButton.setTitle("Run", for: .normal)
         runButton.addTarget(self, action:#selector(runButtonClicked), for: .touchUpInside)
         return runButton
     }()
@@ -158,29 +158,41 @@ class ViewController: UIViewController {
     func generate_seq(model: model_25, tokenizer: Dictionary<String, Int>, seqLength: Int, seedText: String, numWords: Int) -> String{
         var result: String = ""
         var inText = seedText
+        var randomize = true
         
+        // Prep the input
+        inText = prep_input(input: inText)
+        
+        // Pad the input with random words if necessary
+        var randomText: String = ""
+        let remainingLen = seqLength - inText.components(separatedBy: " ").count
+        let randomLen = remainingLen > 0 ? remainingLen : 1
+        if randomize{
+            for _ in 0...randomLen{
+                let num = arc4random_uniform(UInt32(tokenizer.count))
+                randomText.append(tokenizer.key(forValue: Int(num))! + " ")
+            }
+        }
+        inText = randomText + inText
+        
+        print("Input:" + inText)
+        
+        var encoded = word_to_int(tokenizer: tokenizer, data: inText)
+        
+        // Tokenize the input
+        encoded = pad_sequence(data: encoded, len: seqLength)
+        guard let inputData = try? MLMultiArray(shape:[25,1,1], dataType:.double) else {
+            fatalError("Unexpected runtime error. MLMultiArray")
+        }
+        
+        // Put input into a NSMultiArray for use in the model
+        for (index,item) in encoded.enumerated() {
+            inputData[index] = NSNumber(floatLiteral: Double(item))
+        }
+        
+        // Generate the text
         for _ in 1...numWords{
             
-            // func: prepare inputs
-            if inText == ""{
-                for _ in 0..<seqLength{
-                    let num = arc4random_uniform(UInt32(tokenizer.count))
-                    inText.append(tokenizer.key(forValue: Int(num))! + " ")
-                }
-                print(inText)
-            }
-            inText = String(inText.filter { !"\n\t\r".contains($0) })
-            
-            var encoded = word_to_int(tokenizer: tokenizer, data: inText)
-            encoded = pad_sequence(data: encoded, len: seqLength)
-            
-            guard let inputData = try? MLMultiArray(shape:[25,1,1], dataType:.double) else {
-                fatalError("Unexpected runtime error. MLMultiArray")
-            }
-            
-            for (index,item) in encoded.enumerated() {
-                inputData[index] = NSNumber(floatLiteral: Double(item))
-            }
             let input = model_25_input(input1: inputData)
             guard let output = try? model.prediction(input: input).output1 else{
                 fatalError("Unexpected runtime error when predicting")
@@ -193,7 +205,12 @@ class ViewController: UIViewController {
             
             let outputWord: String = tokenizer.key(forValue: maxIndex)!
             result += outputWord + " "
-            inText += " " + outputWord
+            
+            for i in 0..<24{
+                inputData[i] = inputData[i + 1]
+            }
+            inputData[24] =  NSNumber(floatLiteral: Double(maxIndex))
+
         }
         print(result)
         return result
@@ -202,7 +219,9 @@ class ViewController: UIViewController {
     func prep_input(input: String) -> String {
         var data: String = input.lowercased()
         var letters = CharacterSet.letters
+        
         letters.insert(charactersIn: " .,!?;:")
+        
         // remove all non-letters / allowed chars
         data = data.components(separatedBy: letters.inverted).joined(separator: " ")
         
@@ -235,7 +254,7 @@ class ViewController: UIViewController {
         return output
     }
     
-    
+    // take only the last len elements of array
     func pad_sequence(data: Array<Int>, len: Int) -> Array<Int>{
         var diff = len - data.count
         var input = data
