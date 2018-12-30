@@ -9,6 +9,7 @@
 import UIKit
 import IQKeyboardManagerSwift
 
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -19,14 +20,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         IQKeyboardManager.shared.enable = true
-        
-        // create the user interface window and make it visible
-        window = UIWindow()
-        window?.makeKeyAndVisible()
-        
-        // create the view controller and root view controller
-        let vc = ViewController()
-        window?.rootViewController = vc
         
         // return true upon success
         return true

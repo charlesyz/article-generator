@@ -8,103 +8,66 @@
 
 import UIKit
 import CoreML
-class ViewController: UIViewController, UITextFieldDelegate {
+
+class ViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 
     // list of file names
-    let model_list = ["model-sci-space-25", "model-talk-politics-mideast-25", "model-sci-electronics-25"]
-    let tokenizer_list = ["tokenizer-sci-space", "tokenizer-talk-politics-mideast", "tokenizer-sci-electronics"]
-    // UI elements
-    let outputField: UITextView = {
-        let outputField = UITextView(frame: CGRect(x: 20.0, y: 110, width: 300, height: 400))
-        outputField.textAlignment = NSTextAlignment.left
-        outputField.textColor = UIColor.black
-        outputField.backgroundColor = UIColor.white
-        outputField.font = UIFont.boldSystemFont(ofSize: 15)
-        return outputField
-    }()
-    let inputField: UITextField = {
-        let inputField = UITextField(frame: CGRect(x: 40, y: 50, width: 300, height: 40))
-        inputField.placeholder = "Enter seed text here"
-        inputField.font = UIFont.systemFont(ofSize: 15)
-        inputField.borderStyle = UITextField.BorderStyle.roundedRect
-        inputField.autocorrectionType = UITextAutocorrectionType.no
-        inputField.keyboardType = UIKeyboardType.default
-        inputField.returnKeyType = UIReturnKeyType.done
-        inputField.clearButtonMode = UITextField.ViewMode.whileEditing;
-        inputField.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
-        return inputField
-    }()
-    let lengthField: UITextField = {
-        let lengthField = UITextField(frame: CGRect(x: 160, y: 600, width: 80, height: 40))
-        lengthField.placeholder = "Length"
-        lengthField.text = "100"
-        lengthField.font = UIFont.systemFont(ofSize: 15)
-        lengthField.borderStyle = UITextField.BorderStyle.roundedRect
-        lengthField.autocorrectionType = UITextAutocorrectionType.no
-        lengthField.keyboardType = UIKeyboardType.default
-        lengthField.returnKeyType = UIReturnKeyType.done
-        lengthField.clearButtonMode = UITextField.ViewMode.whileEditing;
-        lengthField.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
-        return lengthField
-    }()
-    let modelField: UITextField = {
-        let modelField = UITextField(frame: CGRect(x: 250, y: 600, width: 80, height: 40))
-        modelField.placeholder = "Model#(0/1)"
-        modelField.text = "1"
-        modelField.font = UIFont.systemFont(ofSize: 15)
-        modelField.borderStyle = UITextField.BorderStyle.roundedRect
-        modelField.autocorrectionType = UITextAutocorrectionType.no
-        modelField.keyboardType = UIKeyboardType.default
-        modelField.returnKeyType = UIReturnKeyType.done
-        modelField.clearButtonMode = UITextField.ViewMode.whileEditing;
-        modelField.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
-        return modelField
-    }()
+    let model_list = ["model-sci-space-25", "model-talk-politics-mideast-25", "model-sci-electronics-25", "model-motorcycles", "model-forsale"]
+    let tokenizer_list = ["tokenizer-sci-space", "tokenizer-talk-politics-mideast", "tokenizer-sci-electronics", "tokenizer-motorcycles", "tokenizer-forsale"]
     
-    let runButton: UIButton = {
-        let runButton : UIButton = UIButton(frame: CGRect(x: 50, y: 600, width: 100, height: 50))
-        runButton.backgroundColor = .black
-        runButton.setTitle("Run", for: .normal)
-        runButton.addTarget(self, action:#selector(runButtonClicked), for: .touchUpInside)
-        return runButton
-    }()
+    var inputData: String = ""
+    var lengthData: Int = 100
+    var modelData: Int = 2
+    var randomize: Bool = true
+    var completeSentence: Bool = true
+    var tableReferenceController: TableViewController?
+    
+    // Create the Activity Indicator
+    var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView(style: .whiteLarge)
+    
+    func saveContrainerViewRefference(vc: TableViewController){
+        self.tableReferenceController = vc
+    }
+    
+    @IBOutlet weak var outputField: UITextView!
+    
+    @IBAction func runButton(_ sender: UIButton) {
+        
+        // Start the loading animation
+        activityIndicator.startAnimating()
+        
+        // get Data:
+        inputData = tableReferenceController?.inputField.text ?? ""
+        lengthData = Int(tableReferenceController?.lengthField.text ?? "100") ?? 100
+        randomize = tableReferenceController?.randomizeSwitch.isOn ?? true
+        completeSentence = tableReferenceController?.completeSwitch.isOn ?? true
+        modelData = tableReferenceController?.pickerList.firstIndex(of: tableReferenceController?.subjectField.text ?? "Space") ?? 0
+        
+        // run the model
+        let num: Int = modelData
+        outputField.text = runLSTM(modelNum: num)
+        
+        // hide activity indicator
+        activityIndicator.removeFromSuperview()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // background color
-        self.view.backgroundColor = .white
-        
-        let toolbar:UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0,  width: self.view.frame.size.width, height: 30))
-        //create left side empty space so that done button set on right side
-        let flexSpace = UIBarButtonItem(barButtonSystemItem:    .flexibleSpace, target: nil, action: nil)
-        let doneBtn: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissKeyboard))
-        toolbar.setItems([flexSpace, doneBtn], animated: false)
-        toolbar.sizeToFit()
-        
-        //setting toolbar as inputAccessoryView
-        self.outputField.inputAccessoryView = toolbar
-        self.inputField.inputAccessoryView = toolbar
-        self.lengthField.inputAccessoryView = toolbar
-        self.modelField.inputAccessoryView = toolbar
-        
-        // subviews
-        self.view.addSubview(outputField)
-        
-        self.view.addSubview(inputField)
-        self.view.addSubview(runButton)
-        self.view.addSubview(modelField)
-        self.view.addSubview(lengthField)
-        
-        // tap recognizer to dismiss keyboard
-        let _: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
-        
-        //outputLabel.text = runLSTM(modelNum: 1)
+        activityIndicator.style = .whiteLarge
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.frame = CGRect(x: 0.0,y: 0.0,width: 40.0,height: 40.0);
+        activityIndicator.center = self.view.center
+        self.view.addSubview(activityIndicator)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewDidLayoutSubviews(){
+        
     }
     
     //Calls this function when the tap is recognized.
@@ -117,19 +80,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.view.endEditing(true)
         return false
     }
-    // run button
-    @objc func runButtonClicked(sender: UIButton!) {
-        let num: Int = Int(modelField.text!)!
-        outputField.text = runLSTM(modelNum: num)
-    }
     
     func runLSTM(modelNum: Int) -> String {
         // load models and tokenizers
         let model = load_model(modelName: model_list[modelNum])
         let tokenizer = load_tokenizer(tokenizerName: tokenizer_list[modelNum])
-        let num: Int = Int(lengthField.text!)!
+        let num: Int = lengthData
         
-        let output = generate_seq(model: model, tokenizer: tokenizer, seqLength: 25, seedText: inputField.text!, numWords: num)
+        let output = generate_seq(model: model, tokenizer: tokenizer, seqLength: 25, seedText: inputData, numWords: num)
         
         return output
         
@@ -160,8 +118,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
     func generate_seq(model: model_25, tokenizer: Dictionary<String, Int>, seqLength: Int, seedText: String, numWords: Int) -> String{
         var result: String = ""
         var inText = seedText
-        let randomize = true
-        let completeSentence = true
         
         // Prep the input
         inText = prep_input(input: inText)
@@ -174,32 +130,18 @@ class ViewController: UIViewController, UITextFieldDelegate {
             randomText = tokenizer.key(forValue: Int(arc4random_uniform(UInt32(tokenizer.count))))!
             print("Random:" + randomText)
             
-            // only show the random word if the input string is empty.
-            if inText != "" {
-                displayText = inText
-            }
-            else{
-                displayText = randomText + " " + inText
-            }
-            
-            inText = randomText + " " + inText
-            
         }
         
-        /* Pad the input with random words if necessary
+        // only show the random word if the input string is empty.
+        if inText != "" {
+            displayText = inText + " "
+        }
+        else{
+            displayText = randomText + " " + inText
+        }
         
-        if randomize{
-         
-            let remainingLen = seqLength - inText.components(separatedBy: " ").count
-            let randomLen = remainingLen > 0 ? remainingLen : 1
-         
-            for _ in 0...randomLen{
-                let num = arc4random_uniform(UInt32(tokenizer.count))
-                randomText.append(tokenizer.key(forValue: Int(num))! + " ")
-            }
-         
-         inText = randomText + inText
-        }*/
+        inText = randomText + " " + inText
+        
         
         print("Input:" + inText)
         
@@ -247,7 +189,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
             }
 
         }
-        
         
         result = displayText + result
         

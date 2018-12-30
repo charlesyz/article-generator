@@ -9,8 +9,15 @@
 /* Begin PBXBuildFile section */
 		43B3A2113B1F8997DA3945F6 /* Pods_Article_GeneratorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11EB4DD90A3EB2B3A22D0A09 /* Pods_Article_GeneratorTests.framework */; };
 		84C90718352C288ADBB6185D /* Pods_Article_Generator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1783617027C6151095DDA323 /* Pods_Article_Generator.framework */; };
+		AE091E0421D9388700A9F553 /* launchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE091E0321D9388700A9F553 /* launchScreen.storyboard */; };
+		AE091E3E21D93D4900A9F553 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE091E3D21D93D4900A9F553 /* Main.storyboard */; };
+		AE091E4021D942CF00A9F553 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE091E3F21D942CF00A9F553 /* TableViewController.swift */; };
+		AE091E4621D96DE300A9F553 /* model-forsale.mlmodelc in Resources */ = {isa = PBXBuildFile; fileRef = AE091E4521D96DE300A9F553 /* model-forsale.mlmodelc */; };
+		AE091E4821D96DEC00A9F553 /* model-motorcycles.mlmodelc in Resources */ = {isa = PBXBuildFile; fileRef = AE091E4721D96DEC00A9F553 /* model-motorcycles.mlmodelc */; };
 		AE0FCD4021D821EF00ABE468 /* tokenizer-sci-electronics.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE0FCD3F21D821EF00ABE468 /* tokenizer-sci-electronics.plist */; };
 		AE0FCD4B21D8294400ABE468 /* model-sci-electronics-25.mlmodelc in Resources */ = {isa = PBXBuildFile; fileRef = AE0FCD4A21D8294400ABE468 /* model-sci-electronics-25.mlmodelc */; };
+		AE0FCD5221D910B400ABE468 /* tokenizer-motorcycles.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE0FCD5021D910B400ABE468 /* tokenizer-motorcycles.plist */; };
+		AE0FCD5321D910B400ABE468 /* tokenizer-forsale.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE0FCD5121D910B400ABE468 /* tokenizer-forsale.plist */; };
 		AE1B67EC21374C4300838FD7 /* model-sci-space-25.mlmodelc in Resources */ = {isa = PBXBuildFile; fileRef = AE1B67EB21374C4300838FD7 /* model-sci-space-25.mlmodelc */; };
 		AE1B67EE21374C4D00838FD7 /* model-talk-politics-mideast-25.mlmodelc in Resources */ = {isa = PBXBuildFile; fileRef = AE1B67ED21374C4D00838FD7 /* model-talk-politics-mideast-25.mlmodelc */; };
 		AE1B67F3213752FE00838FD7 /* tokenizer-sci-space.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE1B67F1213752FE00838FD7 /* tokenizer-sci-space.plist */; };
@@ -20,7 +27,6 @@
 		AE9F95302133979E000D5B3B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F952F2133979E000D5B3B /* AppDelegate.swift */; };
 		AE9F95322133979E000D5B3B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F95312133979E000D5B3B /* ViewController.swift */; };
 		AE9F95372133979E000D5B3B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE9F95362133979E000D5B3B /* Assets.xcassets */; };
-		AE9F953A2133979E000D5B3B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE9F95382133979E000D5B3B /* LaunchScreen.storyboard */; };
 		AE9F95452133979F000D5B3B /* Article_GeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F95442133979F000D5B3B /* Article_GeneratorTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -40,8 +46,15 @@
 		4997F6006CCD964838D2CA87 /* Pods-Article_Generator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Article_Generator.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Article_Generator/Pods-Article_Generator.debug.xcconfig"; sourceTree = "<group>"; };
 		54DD036392FA39DADB05E8ED /* Pods-Article_Generator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Article_Generator.release.xcconfig"; path = "Pods/Target Support Files/Pods-Article_Generator/Pods-Article_Generator.release.xcconfig"; sourceTree = "<group>"; };
 		7DAE618D4FCE55E6A93917EB /* Pods-Article_GeneratorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Article_GeneratorTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Article_GeneratorTests/Pods-Article_GeneratorTests.release.xcconfig"; sourceTree = "<group>"; };
+		AE091E0321D9388700A9F553 /* launchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = launchScreen.storyboard; sourceTree = "<group>"; };
+		AE091E3D21D93D4900A9F553 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		AE091E3F21D942CF00A9F553 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		AE091E4521D96DE300A9F553 /* model-forsale.mlmodelc */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "model-forsale.mlmodelc"; path = "../../../../../../PycharmProjects/word_rnn/models/model-forsale.mlmodelc/model-forsale.mlmodelc"; sourceTree = "<group>"; };
+		AE091E4721D96DEC00A9F553 /* model-motorcycles.mlmodelc */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "model-motorcycles.mlmodelc"; path = "../../../../../../PycharmProjects/word_rnn/models/model-motorcycles.mlmodelc/model-motorcycles.mlmodelc"; sourceTree = "<group>"; };
 		AE0FCD3F21D821EF00ABE468 /* tokenizer-sci-electronics.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "tokenizer-sci-electronics.plist"; sourceTree = "<group>"; };
 		AE0FCD4A21D8294400ABE468 /* model-sci-electronics-25.mlmodelc */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "model-sci-electronics-25.mlmodelc"; sourceTree = "<group>"; };
+		AE0FCD5021D910B400ABE468 /* tokenizer-motorcycles.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "tokenizer-motorcycles.plist"; sourceTree = "<group>"; };
+		AE0FCD5121D910B400ABE468 /* tokenizer-forsale.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "tokenizer-forsale.plist"; sourceTree = "<group>"; };
 		AE1B67EB21374C4300838FD7 /* model-sci-space-25.mlmodelc */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "model-sci-space-25.mlmodelc"; sourceTree = "<group>"; };
 		AE1B67ED21374C4D00838FD7 /* model-talk-politics-mideast-25.mlmodelc */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "model-talk-politics-mideast-25.mlmodelc"; sourceTree = "<group>"; };
 		AE1B67F1213752FE00838FD7 /* tokenizer-sci-space.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "tokenizer-sci-space.plist"; sourceTree = "<group>"; };
@@ -52,7 +65,6 @@
 		AE9F952F2133979E000D5B3B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AE9F95312133979E000D5B3B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		AE9F95362133979E000D5B3B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		AE9F95392133979E000D5B3B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AE9F953B2133979E000D5B3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AE9F95402133979F000D5B3B /* Article_GeneratorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Article_GeneratorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE9F95442133979F000D5B3B /* Article_GeneratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article_GeneratorTests.swift; sourceTree = "<group>"; };
@@ -116,11 +128,13 @@
 				AE9F95512134B53A000D5B3B /* Models */,
 				AE9F952F2133979E000D5B3B /* AppDelegate.swift */,
 				AE9F95312133979E000D5B3B /* ViewController.swift */,
+				AE091E3F21D942CF00A9F553 /* TableViewController.swift */,
 				AE9F95362133979E000D5B3B /* Assets.xcassets */,
-				AE9F95382133979E000D5B3B /* LaunchScreen.storyboard */,
 				AE9F953B2133979E000D5B3B /* Info.plist */,
 				AE8207FD2136377900AD58D7 /* extensions.swift */,
 				AE1B67FB213758B900838FD7 /* MLModelClasses.swift */,
+				AE091E0321D9388700A9F553 /* launchScreen.storyboard */,
+				AE091E3D21D93D4900A9F553 /* Main.storyboard */,
 			);
 			path = "Article Generator";
 			sourceTree = "<group>";
@@ -137,6 +151,8 @@
 		AE9F95512134B53A000D5B3B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				AE091E4721D96DEC00A9F553 /* model-motorcycles.mlmodelc */,
+				AE091E4521D96DE300A9F553 /* model-forsale.mlmodelc */,
 				AE0FCD4A21D8294400ABE468 /* model-sci-electronics-25.mlmodelc */,
 				AE1B67ED21374C4D00838FD7 /* model-talk-politics-mideast-25.mlmodelc */,
 				AE1B67EB21374C4300838FD7 /* model-sci-space-25.mlmodelc */,
@@ -147,6 +163,8 @@
 		AE9F95582134B586000D5B3B /* Tokenizers */ = {
 			isa = PBXGroup;
 			children = (
+				AE0FCD5121D910B400ABE468 /* tokenizer-forsale.plist */,
+				AE0FCD5021D910B400ABE468 /* tokenizer-motorcycles.plist */,
 				AE0FCD3F21D821EF00ABE468 /* tokenizer-sci-electronics.plist */,
 				AE1B67F1213752FE00838FD7 /* tokenizer-sci-space.plist */,
 				AE1B67F2213752FE00838FD7 /* tokenizer-talk-politics-mideast.plist */,
@@ -254,10 +272,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE0FCD4021D821EF00ABE468 /* tokenizer-sci-electronics.plist in Resources */,
-				AE9F953A2133979E000D5B3B /* LaunchScreen.storyboard in Resources */,
+				AE091E4821D96DEC00A9F553 /* model-motorcycles.mlmodelc in Resources */,
+				AE091E0421D9388700A9F553 /* launchScreen.storyboard in Resources */,
+				AE0FCD5321D910B400ABE468 /* tokenizer-forsale.plist in Resources */,
+				AE091E4621D96DE300A9F553 /* model-forsale.mlmodelc in Resources */,
 				AE9F95372133979E000D5B3B /* Assets.xcassets in Resources */,
 				AE1B67F3213752FE00838FD7 /* tokenizer-sci-space.plist in Resources */,
 				AE1B67EE21374C4D00838FD7 /* model-talk-politics-mideast-25.mlmodelc in Resources */,
+				AE091E3E21D93D4900A9F553 /* Main.storyboard in Resources */,
+				AE0FCD5221D910B400ABE468 /* tokenizer-motorcycles.plist in Resources */,
 				AE1B67EC21374C4300838FD7 /* model-sci-space-25.mlmodelc in Resources */,
 				AE1B67F4213752FE00838FD7 /* tokenizer-talk-politics-mideast.plist in Resources */,
 				AE0FCD4B21D8294400ABE468 /* model-sci-electronics-25.mlmodelc in Resources */,
@@ -350,6 +373,7 @@
 				AE8207FE2136377900AD58D7 /* extensions.swift in Sources */,
 				AE1B67FC213758B900838FD7 /* MLModelClasses.swift in Sources */,
 				AE9F95322133979E000D5B3B /* ViewController.swift in Sources */,
+				AE091E4021D942CF00A9F553 /* TableViewController.swift in Sources */,
 				AE9F95302133979E000D5B3B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -371,17 +395,6 @@
 			targetProxy = AE9F95412133979F000D5B3B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		AE9F95382133979E000D5B3B /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AE9F95392133979E000D5B3B /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		AE9F95472133979F000D5B3B /* Debug */ = {
