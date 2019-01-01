@@ -14,6 +14,8 @@
 		AE091E4021D942CF00A9F553 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE091E3F21D942CF00A9F553 /* TableViewController.swift */; };
 		AE091E4621D96DE300A9F553 /* model-forsale.mlmodelc in Resources */ = {isa = PBXBuildFile; fileRef = AE091E4521D96DE300A9F553 /* model-forsale.mlmodelc */; };
 		AE091E4821D96DEC00A9F553 /* model-motorcycles.mlmodelc in Resources */ = {isa = PBXBuildFile; fileRef = AE091E4721D96DEC00A9F553 /* model-motorcycles.mlmodelc */; };
+		AE091E4C21DBD7A800A9F553 /* model-med.mlmodelc in Resources */ = {isa = PBXBuildFile; fileRef = AE091E4B21DBD7A800A9F553 /* model-med.mlmodelc */; };
+		AE091E4E21DBD7FA00A9F553 /* tokenizer-med.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE091E4D21DBD7FA00A9F553 /* tokenizer-med.plist */; };
 		AE0FCD4021D821EF00ABE468 /* tokenizer-sci-electronics.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE0FCD3F21D821EF00ABE468 /* tokenizer-sci-electronics.plist */; };
 		AE0FCD4B21D8294400ABE468 /* model-sci-electronics-25.mlmodelc in Resources */ = {isa = PBXBuildFile; fileRef = AE0FCD4A21D8294400ABE468 /* model-sci-electronics-25.mlmodelc */; };
 		AE0FCD5221D910B400ABE468 /* tokenizer-motorcycles.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE0FCD5021D910B400ABE468 /* tokenizer-motorcycles.plist */; };
@@ -51,6 +53,8 @@
 		AE091E3F21D942CF00A9F553 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		AE091E4521D96DE300A9F553 /* model-forsale.mlmodelc */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "model-forsale.mlmodelc"; path = "../../../../../../PycharmProjects/word_rnn/models/model-forsale.mlmodelc/model-forsale.mlmodelc"; sourceTree = "<group>"; };
 		AE091E4721D96DEC00A9F553 /* model-motorcycles.mlmodelc */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "model-motorcycles.mlmodelc"; path = "../../../../../../PycharmProjects/word_rnn/models/model-motorcycles.mlmodelc/model-motorcycles.mlmodelc"; sourceTree = "<group>"; };
+		AE091E4B21DBD7A800A9F553 /* model-med.mlmodelc */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "model-med.mlmodelc"; sourceTree = "<group>"; };
+		AE091E4D21DBD7FA00A9F553 /* tokenizer-med.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "tokenizer-med.plist"; sourceTree = "<group>"; };
 		AE0FCD3F21D821EF00ABE468 /* tokenizer-sci-electronics.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "tokenizer-sci-electronics.plist"; sourceTree = "<group>"; };
 		AE0FCD4A21D8294400ABE468 /* model-sci-electronics-25.mlmodelc */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "model-sci-electronics-25.mlmodelc"; sourceTree = "<group>"; };
 		AE0FCD5021D910B400ABE468 /* tokenizer-motorcycles.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "tokenizer-motorcycles.plist"; sourceTree = "<group>"; };
@@ -151,6 +155,7 @@
 		AE9F95512134B53A000D5B3B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				AE091E4B21DBD7A800A9F553 /* model-med.mlmodelc */,
 				AE091E4721D96DEC00A9F553 /* model-motorcycles.mlmodelc */,
 				AE091E4521D96DE300A9F553 /* model-forsale.mlmodelc */,
 				AE0FCD4A21D8294400ABE468 /* model-sci-electronics-25.mlmodelc */,
@@ -164,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				AE0FCD5121D910B400ABE468 /* tokenizer-forsale.plist */,
+				AE091E4D21DBD7FA00A9F553 /* tokenizer-med.plist */,
 				AE0FCD5021D910B400ABE468 /* tokenizer-motorcycles.plist */,
 				AE0FCD3F21D821EF00ABE468 /* tokenizer-sci-electronics.plist */,
 				AE1B67F1213752FE00838FD7 /* tokenizer-sci-space.plist */,
@@ -272,10 +278,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE0FCD4021D821EF00ABE468 /* tokenizer-sci-electronics.plist in Resources */,
+				AE091E4E21DBD7FA00A9F553 /* tokenizer-med.plist in Resources */,
 				AE091E4821D96DEC00A9F553 /* model-motorcycles.mlmodelc in Resources */,
 				AE091E0421D9388700A9F553 /* launchScreen.storyboard in Resources */,
 				AE0FCD5321D910B400ABE468 /* tokenizer-forsale.plist in Resources */,
 				AE091E4621D96DE300A9F553 /* model-forsale.mlmodelc in Resources */,
+				AE091E4C21DBD7A800A9F553 /* model-med.mlmodelc in Resources */,
 				AE9F95372133979E000D5B3B /* Assets.xcassets in Resources */,
 				AE1B67F3213752FE00838FD7 /* tokenizer-sci-space.plist in Resources */,
 				AE1B67EE21374C4D00838FD7 /* model-talk-politics-mideast-25.mlmodelc in Resources */,

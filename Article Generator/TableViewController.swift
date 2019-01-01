@@ -17,7 +17,7 @@ class TableViewController: UITableViewController, UIPickerViewDelegate, UIPicker
     @IBOutlet weak var randomizeSwitch: UISwitch!
     @IBOutlet weak var completeSwitch: UISwitch!
     
-    let pickerList = [String](arrayLiteral: "Space", "Politics-Mideast", "Electronics", "Motorcycles", "For Sale")
+    let pickerList = [String](arrayLiteral: "Space", "Politics-Mideast", "Electronics", "Motorcycles", "For Sale", "Medicine")
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1

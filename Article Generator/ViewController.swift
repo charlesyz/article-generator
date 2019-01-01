@@ -12,8 +12,8 @@ import CoreML
 class ViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 
     // list of file names
-    let model_list = ["model-sci-space-25", "model-talk-politics-mideast-25", "model-sci-electronics-25", "model-motorcycles", "model-forsale"]
-    let tokenizer_list = ["tokenizer-sci-space", "tokenizer-talk-politics-mideast", "tokenizer-sci-electronics", "tokenizer-motorcycles", "tokenizer-forsale"]
+    let model_list = ["model-sci-space-25", "model-talk-politics-mideast-25", "model-sci-electronics-25", "model-motorcycles", "model-forsale", "model-med"]
+    let tokenizer_list = ["tokenizer-sci-space", "tokenizer-talk-politics-mideast", "tokenizer-sci-electronics", "tokenizer-motorcycles", "tokenizer-forsale", "tokenizer-med"]
     
     var inputData: String = ""
     var lengthData: Int = 100
