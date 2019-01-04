@@ -21,8 +21,8 @@ Fun things I noticed about the neural network:
 
 # Photos
 
-<img src="images/Main_Screen.PNG" width="100">
-<img src="images/Selections.PNG" width="100">
-<img src="images/Space.PNG" width="100">
-<img src="images/MiddleEast.PNG" width="100">
-<img src="images/Electronic_Random.jpeg" width="100">
+<img src="images/Main_Screen.PNG" width="500">
+<img src="images/Selections.PNG" width="500">
+<img src="images/Space.PNG" width="500">
+<img src="images/MiddleEast.PNG" width="500">
+<img src="images/Electronic_random.jpeg" width="500">
