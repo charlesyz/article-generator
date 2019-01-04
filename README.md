@@ -20,8 +20,8 @@ Fun things I noticed about the neural network:
 - Contractions were always put together. When my data cleaning was flawed, it removed instances of ', thereby splitting any contractions. Yet, contractions were always grouped together. For example, you'd often see "we re" or "thing s". It would be very rare for there to be a incomplete contraction
 
 # Photos
-![Main Screen](images/Main_Screen.PNG&s=200)
-![Selections](images/Selections.PNG&s=200)
-![Space](images/Space.PNG&s=200)
-![MiddleEast](images/MiddleEast.PNG&s=200)
-![Electronic-Random](images/Electronic_Random.jpeg&s=200)
+![Main Screen](images/Main_Screen.PNG)
+![Selections](images/Selections.PNG)
+![Space](images/Space.PNG)
+![MiddleEast](images/MiddleEast.PNG)
+![Electronic-Random](images/Electronic_Random.jpeg)
