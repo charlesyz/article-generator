@@ -18,3 +18,10 @@ Working with text generation posed a lot of new issues. Previously, I had worked
 Fun things I noticed about the neural network:
 - The neural network does not know any grammar rules, yet learns them intuitively. For example, after "the", it will always put a noun. After a noun, there will usually be a verb. 
 - Contractions were always put together. When my data cleaning was flawed, it removed instances of ', thereby splitting any contractions. Yet, contractions were always grouped together. For example, you'd often see "we re" or "thing s". It would be very rare for there to be a incomplete contraction
+
+# Photos
+![Main Screen](images/Main_Screen.jpeg?raw=true "Main Screen")
+![Selections](images/Selections.PNG?raw=true "Selections")
+![Space](images/Space.PNG?raw=true "Space")
+![MiddleEast](images/MiddleEast.PNG?raw=true "MiddleEast")
+![Electronic-Random](images/Electronic_Random.PNG?raw=true "Electronic-Random")
