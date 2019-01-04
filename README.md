@@ -21,8 +21,8 @@ Fun things I noticed about the neural network:
 
 # Photos
 
-<img src="https://github.com/charlesyz/article-generator/tree/master/images/Main_Screen.PNG" width="48">
-<img src="https://github.com/charlesyz/article-generator/tree/master/images/Selections.PNG" width="48">
-<img src="https://github.com/charlesyz/article-generator/tree/master/images/Space.PNG" width="48">
-<img src="https://github.com/charlesyz/article-generator/tree/master/images/MiddleEast.PNG" width="48">
-<img src="https://github.com/charlesyz/article-generator/tree/master/images/Electronic_Random.jpeg" width="48">
+<img src="images/Main_Screen.PNG" width="100">
+<img src="images/Selections.PNG" width="100">
+<img src="images/Space.PNG" width="100">
+<img src="images/MiddleEast.PNG" width="100">
+<img src="images/Electronic_Random.jpeg" width="100">
